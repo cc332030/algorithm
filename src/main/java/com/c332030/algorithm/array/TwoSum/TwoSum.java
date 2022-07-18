@@ -12,7 +12,7 @@ import java.util.Map;
  * @author c332030
  * @version 1.0
  */
-public class TwoSumToNum {
+public class TwoSum {
 
     public static void main(String[] args) {
 
