@@ -44,11 +44,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * @param s string字符串
      * @return int整型
      */
-    public static int lengthOfLongestSubstring (String s) {
-
-        if(null == s || s.length() == 0) {
-            return 0;
-        }
+    public static int lengthOfLongestSubstring(String s) {
 
         int len = 0, strLen = s.length();
         int start = 0,end = 0;
@@ -60,7 +56,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
             Integer index = map.get(ch);
 
             if(null != index && index >= start) {
-                len = Math.max(len, end - start);
+                len = Math.max(len, end - start + 1);
                 start = index + 1;
             }
 
@@ -73,6 +69,20 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
 
         return len;
+    }
+
+    public static int lengthOfLongestSubstring2(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int max = 0, start = 0;
+        for (int end = 0; end < s.length(); end++) {
+            char ch = s.charAt(end);
+            if (map.containsKey(ch)){
+                start = Math.max(map.get(ch)+1,start);
+            }
+            max = Math.max(max,end - start + 1);
+            map.put(ch,end);
+        }
+        return max;
     }
 
 }
