@@ -56,7 +56,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
             Integer index = map.get(ch);
 
             if(null != index && index >= start) {
-                len = Math.max(len, end - start + 1);
+                len = Math.max(len, end - start);
                 start = index + 1;
             }
 
