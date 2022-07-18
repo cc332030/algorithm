@@ -1,10 +1,17 @@
 package com.c332030.algorithm.string.LongestSubstringWithoutRepeatingCharacters;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <p>
  * Description: LongestSubstringWithoutRepeatingCharacters 最长不重复子串
  *
  * <a href="https://www.nowcoder.com/practice/5947ddcc17cb4f09909efa7342780048">
+ *     LongestSubstringWithoutRepeatingCharacters
+ * </a>
+ *
+ * <a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">
  *     LongestSubstringWithoutRepeatingCharacters
  * </a>
  *
@@ -23,13 +30,49 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
 
+        System.out.println(lengthOfLongestSubstring(
+            "wlrbbmqbhcdarzowkkyhiddqscdxrjmowfrxsjybldbefsarcbynecdyggxxpklorellnmpapqfwkhopkmco"));
+        System.out.println(lengthOfLongestSubstring(" "));
+        System.out.println(lengthOfLongestSubstring("au"));
 
-        String str = "wlrbbmqbhcdarzowkkyhiddqscdxrjmowfrxsjybldbefsarcbynecdyggxxpklorellnmpapqfwkhopkmco";
+        // TODO
+        System.out.println(lengthOfLongestSubstring("aab"));
+    }
 
-        System.out.println(str.length());
+    /**
+     *
+     * @param s string字符串
+     * @return int整型
+     */
+    public static int lengthOfLongestSubstring (String s) {
 
-        Object result = new Solution().lengthOfLongestSubstring(str);
-        System.out.println(result);
+        if(null == s || s.length() == 0) {
+            return 0;
+        }
+
+        int len = 0, strLen = s.length();
+        int start = 0,end = 0;
+
+        Map<Character, Integer> map = new HashMap<>(strLen);
+        while(end < strLen) {
+
+            char ch = s.charAt(end);
+            Integer index = map.get(ch);
+
+            if(null != index && index >= start) {
+                len = Math.max(len, end - start);
+                start = index + 1;
+            }
+
+            map.put(ch, end++);
+        }
+
+        // 字符未重复
+        if(0 == len) {
+            return s.length();
+        }
+
+        return len;
     }
 
 }
