@@ -30,12 +30,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
 
-        System.out.println(lengthOfLongestSubstring(
-            "wlrbbmqbhcdarzowkkyhiddqscdxrjmowfrxsjybldbefsarcbynecdyggxxpklorellnmpapqfwkhopkmco"));
+        System.out.println(lengthOfLongestSubstring("wlrbbmqbhcdarzowkkyhiddqscdxrjmowfrxsjybldbefsarcbynecdyggxxpklorellnmpapqfwkhopkmco"));
         System.out.println(lengthOfLongestSubstring(" "));
         System.out.println(lengthOfLongestSubstring("au"));
 
-        // TODO
         System.out.println(lengthOfLongestSubstring("aab"));
     }
 
@@ -56,33 +54,14 @@ public class LongestSubstringWithoutRepeatingCharacters {
             Integer index = map.get(ch);
 
             if(null != index && index >= start) {
-                len = Math.max(len, end - start);
                 start = index + 1;
             }
 
+            len = Math.max(len, end - start + 1);
             map.put(ch, end++);
         }
 
-        // 字符未重复
-        if(0 == len) {
-            return s.length();
-        }
-
         return len;
-    }
-
-    public static int lengthOfLongestSubstring2(String s) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        int max = 0, start = 0;
-        for (int end = 0; end < s.length(); end++) {
-            char ch = s.charAt(end);
-            if (map.containsKey(ch)){
-                start = Math.max(map.get(ch)+1,start);
-            }
-            max = Math.max(max,end - start + 1);
-            map.put(ch,end);
-        }
-        return max;
     }
 
 }
