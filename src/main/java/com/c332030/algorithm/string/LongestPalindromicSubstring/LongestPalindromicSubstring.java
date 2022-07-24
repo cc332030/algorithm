@@ -38,7 +38,7 @@ public class LongestPalindromicSubstring {
 
         // 避免没有回文
         String result = s.substring(0, 1);
-        for (int i = 0; i < len - 1; i++) {
+        for (int i = 0; i < len - 1;) {
 
             int left = i - 1;
             int right = i + 1;
@@ -56,6 +56,7 @@ public class LongestPalindromicSubstring {
                     return result;
                 }
             }
+            i = right;
 
             if(left < 0) {
                 continue;
