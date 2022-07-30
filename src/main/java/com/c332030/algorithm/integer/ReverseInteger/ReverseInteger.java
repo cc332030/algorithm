@@ -7,13 +7,17 @@ import java.util.function.Consumer;
 
 /**
  * <p>
- * Description: ReverseInteger
+ * Description: ReverseInteger 反转数字
  * </p>
  *
- * 注意：
- * 1. 负值，转成正值先
- * 2. 注意最小负值，取绝对值后越界
- * 3. 对比每一位时，小于不会越界，大于越界，等于才需要检查下一位
+ * 思路：
+ * 1. 检查是否反转后一定为 0 或者越界（Integer.MIN_VALUE）
+ * 2. 反转数字为数组
+ * 3. 检查是否越界
+ *  3.1 小于，不越界
+ *  3.2 等于，检查下一位
+ *  3.3 大于，越界
+ * 4. 负数要返回负数
  *
  * </p>
  *
