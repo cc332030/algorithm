@@ -1,4 +1,4 @@
-package com.c332030.algorithm.integer.ReverseInteger;
+package com.c332030.algorithm.number.ReverseInteger;
 
 import java.util.Arrays;
 import java.util.HashSet;
